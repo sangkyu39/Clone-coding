@@ -1,0 +1,43 @@
+h1 {
+    text-align: center;
+    border : 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    color: white;
+    padding : 10px;
+}
+
+.clicked {
+    color: blue;
+    font-size: 100px;
+}
+
+.hidden {
+    display: none;
+}
+#todo-list {
+    float: right;
+    display : grid;
+    grid-template-columns: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 200px;
+}
+#todo-list li {
+    color: white;
+    padding: 10px;
+}
+
+#todo-list button {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
+    float : right;
+}
+
+#clock {
+    float: right;;
+    border: black solid;
+    width: auto;
+}
