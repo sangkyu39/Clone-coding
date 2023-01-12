@@ -7,8 +7,39 @@
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <title>Document</title>
+    
 </head>
 <body>
-    
+    <div id="root"></div>
+
+    <script>
+        const root = document.getElementById("root");
+        const h3 = React.createElement(
+            "h3",
+            {
+                id : "title",
+                onMouseEnter: () => console.log("mouse"),
+                style : {
+                    color: "red",
+                    border : "1px solid black",
+                }
+            }, 
+            "Hello it's h3"
+        );
+
+        const btn= React.createElement(
+            "button", 
+            {
+                onClick: () => console.log("chlicked")
+            },
+            "click"
+        );
+        //How to render 2 elements
+        const container= React.createElement("div", null, [h3, btn]);
+
+        // show it to the user (add html)
+        ReactDOM.render(container, root);
+
+    </script>
 </body>
 </html>
