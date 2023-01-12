@@ -6,39 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <title>Document</title>
     
 </head>
 <body>
     <div id="root"></div>
-
-    <script>
+    
+    <script type="text/babel">
         const root = document.getElementById("root");
-        const h3 = React.createElement(
-            "h3",
-            {
-                id : "title",
-                onMouseEnter: () => console.log("mouse"),
-                style : {
-                    color: "red",
-                    border : "1px solid black",
-                }
-            }, 
-            "Hello it's h3"
-        );
+        //대문자여야 함 
+        // function Title () {
+        //     return (
+        //     <h3 id="title" onMouseEnter={() => console.log("mouse")}>
+        //         Hello it's h3
+        //     </h3>
+        // );
+        // }
 
-        const btn= React.createElement(
-            "button", 
-            {
-                onClick: () => console.log("chlicked")
-            },
-            "click"
-        );
-        //How to render 2 elements
-        const container= React.createElement("div", null, [h3, btn]);
+        // const h3 = React.createElement(
+        //     "h3",
+        //     {
+        //         id : "title",
+        //         onMouseEnter: () => console.log("mouse"),
+        //         style : {
+        //             color: "red",
+        //             border : "1px solid black",
+        //         }
+        //     }, 
+        //     "Hello it's h3"
+        // );
+        
+        // const Button = () => (<button style={{backgroundColor:"tomato"}} onClick={() => console.log("clicked")}>
+        //     Click me
+        //     </button>);
+        
+        // const btn= React.createElement(
+        //     "button", 
+        //     {
+        //         onClick: () => console.log("chlicked")
+        //     },
+        //     "click"
+        // );
 
+        //How to render 2 
+        // const container= React.createElement("div", null, [Title, Button]);
+        // ==>
+        // <Title /> = 함수 형태 적용
+
+        function Container () {
+            const [counter, setCounter] = React.useState(0);
+            const  onClick = () => {
+                setCounter(counter + 1);
+            }          
+            return (
+                <div>
+                    <h3>Total Clicks : {counter}</h3>
+                    <button onClick={onClick}>Click me</button>
+                </div>
+            );
+        }
         // show it to the user (add html)
-        ReactDOM.render(container, root);
+        ReactDOM.render(<Container />, root);
 
     </script>
 </body>
