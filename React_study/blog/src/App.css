@@ -3,7 +3,8 @@
 }
 
 .background {
-  background-color: gray;
+  border-bottom: 5px solid black;
+
 }
 
 .modal{
