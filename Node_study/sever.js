@@ -38,11 +38,15 @@ app.post("/add", function (req, res) {
 
     db.collection('counter').findOne({name : 'PostCount' }, function(err, find_res) {
         console.log(find_res.totalPost)
-        var totalPost = find_res.totalPost;
+        var TotalPost = find_res.totalPost;
 
-        db.collection('post').insertOne({ _id : totalPost + 1 ,'title' : req.body.title , 'date' : req.body.date} , function(error, res){
+        db.collection('post').insertOne({ _id : TotalPost + 1 ,'title' : req.body.title , 'date' : req.body.date} , function(error, res){
             console.log('saved');
-            db.collection('counter').updateOne({name : 'postCount'}, {$inc : {totalPost : 1}}, function(){})
+            db.collection('counter').updateOne({name : 'PostCount'}, {$inc : {totalPost : 1}}, function(){
+                if(err) {return console.log(err)}
+                console.log("count 증가")
+
+            })
         });
     })
 
@@ -57,4 +61,16 @@ app.get('/list', function (req, res){
         res.render('list.ejs', { posts : post_res });
     });
 
-}) 
+}); 
+
+app.delete('/delete', function(req, res) {
+    
+    req.body._id = parseInt(req.body._id);
+
+    console.log(req.body);
+    
+    db.collection('post').deleteOne(req.body , function(err, post_res) {
+        console.log(req.body._id + ' is deleted');
+        res.status(200).send({ message : 'success'});
+    })
+});
