@@ -40,12 +40,14 @@ const Home = (params) => {
       collection(dbService, "nweets"),
       orderBy("createdAt", "desc")
     );
+    console.log(q);
     onSnapshot(q, (snapshot) => {
       const nweetArr = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       setNweets(nweetArr);
+      console.log(nweetArr);
     });
   }, []);
 
