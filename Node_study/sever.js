@@ -9,7 +9,7 @@ app.set('view engine', 'ejs')
 var db;
 
 MongoClient.connect(
-  "mongodb+srv://sangkyu:sk20031101@cluster0.xokd1wr.mongodb.net/?retryWrites=true&w=majority",
+  "mongodb+srv://@cluster0.xokd1wr.mongodb.net/?retryWrites=true&w=majority",
   function (error, client) {
     if (error) return console.log(error)
 
